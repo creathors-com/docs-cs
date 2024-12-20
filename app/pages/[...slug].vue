@@ -32,7 +32,7 @@ const headline = computed(() => findPageHeadline(page.value))
 
 const links = computed(() => [toc?.bottom?.edit && {
   icon: 'i-heroicons-pencil-square',
-  label: 'Edit this page',
+  label: 'Upravit tuto stránku',
   to: `${toc.bottom.edit}/${page?.value?._file}`,
   target: '_blank'
 }, ...(toc?.bottom?.links || [])].filter(Boolean))

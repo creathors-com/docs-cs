@@ -25,7 +25,7 @@ const { header } = useAppConfig()
       v-if="header?.search"
       #center
     >
-      <UContentSearchButton class="hidden lg:flex" />
+      <UContentSearchButton class="hidden lg:flex" label="Vyhledat..." />
     </template>
 
     <template #right>

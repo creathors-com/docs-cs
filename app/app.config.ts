@@ -52,13 +52,13 @@ export default defineAppConfig({
     }]
   },
   toc: {
-    title: 'Table of Contents',
+    title: 'Obsah',
     bottom: {
-      title: 'Community',
-      edit: 'https://github.com/nuxt-ui-pro/docs/edit/main/content',
+      title: 'Komunita',
+      edit: 'https://github.com/creathors-com/docs-cs/edit/main/content',
       links: [{
         icon: 'i-material-symbols:mail',
-        label: 'Mail support',
+        label: 'Mailová podpora',
         to: 'mailto:support@creathors.com',
       }]
     }
