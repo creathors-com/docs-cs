@@ -11,13 +11,13 @@ defineProps({
 
 useHead({
   htmlAttrs: {
-    lang: 'en'
+    lang: 'cs'
   }
 })
 
 useSeoMeta({
-  title: 'Page not found',
-  description: 'We are sorry but this page could not be found.'
+  title: 'Stránka nenalezena',
+  description: 'Je nám líto, ale tato stránka nebyla nalezena.'
 })
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
@@ -36,7 +36,16 @@ provide('navigation', navigation)
     <UMain>
       <UContainer>
         <UPage>
-          <UPageError :error="error" />
+          <UPageError
+            :error="error"
+            name="Nastala chyba"
+            message="Toto není stránka, kterou hledáte."
+            :clear-button="{
+              label: 'Zpět domů',
+              color: 'primary' as const,
+              size: 'lg' as const
+            }"
+          />
         </UPage>
       </UContainer>
     </UMain>
