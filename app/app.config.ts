@@ -10,7 +10,7 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: 'Nuxt UI Pro - Docs template'
+    siteName: 'Creathors.com - Documentation'
   },
   header: {
     logo: {
@@ -19,37 +19,36 @@ export default defineAppConfig({
       dark: ''
     },
     search: true,
-    colorMode: true,
-    links: [{
-      'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/nuxt-ui-pro/docs',
-      'target': '_blank',
-      'aria-label': 'Docs template on GitHub'
-    }]
+    colorMode: true
   },
   footer: {
-    credits: 'Copyright © 2023',
+    credits: 'Copyright © 2024',
     colorMode: false,
     links: [{
-      'icon': 'i-simple-icons-nuxtdotjs',
-      'to': 'https://nuxt.com',
+      'icon': 'material-symbols:home-pin-sharp',
+      'to': 'https://creathors.com',
       'target': '_blank',
-      'aria-label': 'Nuxt Website'
+      'aria-label': 'Creathors Website'
     }, {
       'icon': 'i-simple-icons-discord',
-      'to': 'https://discord.com/invite/ps2h6QT',
+      'to': 'https://discord.gg/dfuSeMPpj4',
       'target': '_blank',
-      'aria-label': 'Nuxt UI on Discord'
+      'aria-label': 'Creathors on Discord'
     }, {
       'icon': 'i-simple-icons-x',
-      'to': 'https://x.com/nuxt_js',
+      'to': 'https://x.com/CreathorsTeam',
       'target': '_blank',
-      'aria-label': 'Nuxt on X'
+      'aria-label': 'Creathors on X'
     }, {
-      'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/nuxt/ui',
+      'icon': 'i-simple-icons-instagram',
+      'to': 'https://instagram.com/creathorsteam',
       'target': '_blank',
-      'aria-label': 'Nuxt UI on GitHub'
+      'aria-label': 'Creathors on Instagram'
+    }, {
+      'icon': 'i-simple-icons-facebook',
+      'to': 'https://www.facebook.com/people/Creathors-Platform/61561096143764/',
+      'target': '_blank',
+      'aria-label': 'Creathors on Facebook'
     }]
   },
   toc: {
@@ -58,20 +57,9 @@ export default defineAppConfig({
       title: 'Community',
       edit: 'https://github.com/nuxt-ui-pro/docs/edit/main/content',
       links: [{
-        icon: 'i-heroicons-star',
-        label: 'Star on GitHub',
-        to: 'https://github.com/nuxt/ui',
-        target: '_blank'
-      }, {
-        icon: 'i-heroicons-book-open',
-        label: 'Nuxt UI Pro docs',
-        to: 'https://ui.nuxt.com/pro/guide',
-        target: '_blank'
-      }, {
-        icon: 'i-simple-icons-nuxtdotjs',
-        label: 'Purchase a license',
-        to: 'https://ui.nuxt.com/pro/purchase',
-        target: '_blank'
+        icon: 'i-material-symbols:mail',
+        label: 'Mail support',
+        to: 'mailto:support@creathors.com',
       }]
     }
   }

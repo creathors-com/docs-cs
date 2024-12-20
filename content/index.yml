@@ -1,68 +1,44 @@
-title: 'Nuxt UI Pro - Docs template'
-description: Nuxt UI Pro is a collection of premium Vue components built on top of Nuxt UI to create beautiful & responsive Nuxt applications in minutes.
+title: Creathors.com - Documentation
+description: Creathors.com is a dynamic platform where creators can share their content, engage with their audience, and monetize their work. Whether you’re an artist, writer, or filmmaker, Creathors empowers you to showcase your talent. With customizable subscription tiers, fans can directly support their favorite creators while enjoying exclusive perks.
 navigation: false
 hero:
-  title: 'Build your docs in seconds'
-  description: 'Create your documentation in seconds with this template!'
-  orientation: horizontal
+  title: Start building your community in seconds!
+  description: On this page, you will find everything you might need or want to know about the Creathors Platform.
+  orientation: vertical
   headline:
-    label: Made with Nuxt UI Pro
-    to: https://ui.nuxt.com/pro
+    label: Visit Creathors.com
+    to: https://creathors.com
     icon: i-heroicons-arrow-top-right-on-square-20-solid
   links:
     - label: Get started
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: '/getting-started'
+      to: /getting-started
       size: lg
-    - label: Use this template
-      icon: i-simple-icons-github
-      size: lg
-      color: gray
-      to: https://github.com/nuxt-ui-pro/docs
-      target: _blank
-  code: |
-    ```bash [Terminal]
-    npx nuxi init -t github:nuxt-ui-pro/docs
-    ```
 features:
-  title: 'All-in-one docs template'
-  links:
-    - label: 'Explore Nuxt UI Pro'
-      icon: 'i-simple-icons-nuxtdotjs'
-      trailingIcon: 'i-heroicons-arrow-right-20-solid'
-      color: 'gray'
-      to: 'https://ui.nuxt.com/pro'
-      target: '_blank'
-      size: lg
+  title: All-in-one creator platform
   items:
-    - title: 'Nuxt 3'
-      description: 'Powered by Nuxt 3 for optimal performances and SEO.'
-      icon: 'i-simple-icons-nuxtdotjs'
-      to: 'https://nuxt.com'
-      target: '_blank'
-    - title: 'Markdown'
-      description: 'Write your pages with MDC thanks to Nuxt Content.'
-      icon: 'i-simple-icons-markdown'
-      to: 'https://content.nuxt.com'
-      target: '_blank'
-    - title: 'Nuxt UI'
-      description: 'Offers a very large set of full customizable components.'
-      icon: 'i-heroicons-sparkles-20-solid'
-      to: 'https://ui.nuxt.com'
-      target: '_blank'
-    - title: 'TypeScript'
-      description: 'A fully typed development experience.'
-      icon: 'i-simple-icons-typescript'
-      to: 'https://www.typescriptlang.org'
-      target: '_blank'
-    - title: 'Nuxt Studio'
-      description: 'Supported by Nuxt Studio for fast updates and previews.'
-      icon: 'i-simple-icons-nuxtdotjs'
-      to: 'https://nuxt.studio'
-      target: '_blank'
-    - title: 'Search'
-      description: 'A full-text search modal empowered by Fuse.js.'
-      icon: 'i-heroicons-magnifying-glass-20-solid'
-      to: 'https://ui.nuxt.com/pro/components/docs/docs-search'
-      target: '_blank'
+    - title: Billing
+      description: Powered by Stripe, our billing system ensures secure, fast, and flexible payment processing for creators and fans alike.
+      icon: material-symbols:credit-card
+      to: /creators/billing
+    - title: Posts
+      description: Share exclusive content with your fans through a variety of post types, tailored to suit your creative needs.
+      icon: i-bi:file-post
+      to: /creators/posts
+    - title: Tiers
+      description: Offer multiple tier options to create dynamic subscription plans and reward your fans in unique ways.
+      icon: i-octicon:sponsor-tiers-24
+      to: /creators/tiers
+    - title: Coupons
+      description: Create promotional campaigns and exclusive discounts to grow your audience and reward loyal fans.
+      icon: lsicon:coupon-filled
+      to: /creators/coupons
+    - title: Alerts
+      description: Engage with your audience using real-time alerts for streams, posts, and other interactions.
+      icon: material-symbols:notifications-rounded
+      to: /creators/alerts
+    - title: Analytics
+      description: Track your growth with detailed analytics, offering insights to help you optimize your content and strategy.
+      icon: material-symbols:analytics
+      to: /creators/analytics
