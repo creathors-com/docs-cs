@@ -1,16 +1,20 @@
 export default defineAppConfig({
   ui: {
-    primary: 'green',
-    gray: 'slate',
+    colors: {
+      primary: 'green',
+      neutral: 'slate'
+    }
+  },
+  uiPro: {
     footer: {
-      bottom: {
-        left: 'text-sm text-gray-500 dark:text-gray-400',
-        wrapper: 'border-t border-gray-200 dark:border-gray-800'
+      slots: {
+        root: 'border-t border-(--ui-border)',
+        left: 'text-sm text-(--ui-text-muted)'
       }
     }
   },
   seo: {
-    siteName: 'Creathors.com - Documentation'
+    siteName: 'Creathors.com - Dokumentace'
   },
   header: {
     logo: {
@@ -22,7 +26,7 @@ export default defineAppConfig({
     colorMode: true
   },
   footer: {
-    credits: 'Copyright © 2024',
+    credits: 'Copyright © 2025',
     colorMode: false,
     links: [{
       'icon': 'material-symbols:home-pin-sharp',

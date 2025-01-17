@@ -1,29 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
-
   modules: [
+    '@nuxt/ui-pro',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
     '@nuxt/image',
-    '@nuxt/ui',
-    '@nuxthq/studio',
     'nuxt-og-image'
   ],
 
-  hooks: {
-    // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
-    'components:extend': (components) => {
-      const globals = components.filter(c => ['UButton', 'UIcon', 'UBadge'].includes(c.pascalName))
-
-      globals.forEach(c => c.global = true)
-    }
+  devtools: {
+    enabled: true
   },
 
-  colorMode: {
-    disableTransition: true
+  css: ['~/assets/css/main.css'],
+
+  future: {
+    compatibilityVersion: 4
   },
+
+  compatibilityDate: '2024-07-11',
 
   nitro: {
     prerender: {
@@ -34,22 +30,6 @@ export default defineNuxtConfig({
     }
   },
 
-  routeRules: {
-    '/api/search.json': { prerender: true }
-  },
-
-  devtools: {
-    enabled: true
-  },
-
-  typescript: {
-    strict: false
-  },
-
-  future: {
-    compatibilityVersion: 4
-  },
-
   eslint: {
     config: {
       stylistic: {
@@ -57,7 +37,5 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
-  },
-
-  compatibilityDate: '2024-07-11'
+  }
 })

@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
 import type { NuxtError } from '#app'
 
-defineProps({
-  error: {
-    type: Object as PropType<NuxtError>,
-    required: true
-  }
-})
+defineProps<{
+  error: NuxtError
+}>()
 
 useHead({
   htmlAttrs: {
@@ -20,9 +16,8 @@ useSeoMeta({
   description: 'Je nám líto, ale tato stránka nebyla nalezena.'
 })
 
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
-const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
-  default: () => [],
+const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('docs'))
+const { data: files } = useLazyAsyncData('search', () => queryCollectionSearchSections('docs'), {
   server: false
 })
 
@@ -33,22 +28,16 @@ provide('navigation', navigation)
   <div>
     <AppHeader />
 
-    <UMain>
-      <UContainer>
-        <UPage>
-          <UPageError
-            :error="error"
-            name="Nastala chyba"
-            message="Toto není stránka, kterou hledáte."
-            :clear-button="{
+    <UError
+        :error="error"
+        name="Nastala chyba"
+        message="Toto není stránka, kterou hledáte."
+        :clear-button="{
               label: 'Zpět domů',
               color: 'primary' as const,
               size: 'lg' as const
             }"
-          />
-        </UPage>
-      </UContainer>
-    </UMain>
+    />
 
     <AppFooter />
 
@@ -58,7 +47,5 @@ provide('navigation', navigation)
         :navigation="navigation"
       />
     </ClientOnly>
-
-    <UNotifications />
   </div>
 </template>

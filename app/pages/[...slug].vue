@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { withoutTrailingSlash } from 'ufo'
+import type { ContentNavigationItem } from '@nuxt/content'
+import { findPageHeadline } from '#ui-pro/utils/content'
 
 definePageMeta({
   layout: 'docs'
@@ -7,39 +8,44 @@ definePageMeta({
 
 const route = useRoute()
 const { toc, seo } = useAppConfig()
+const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
-const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+const { data } = await useAsyncData(route.path, () => Promise.all([
+  queryCollection('docs').path(route.path).first(),
+  queryCollectionItemSurroundings('docs', route.path, {
+    fields: ['title', 'description']
+  })
+]), {
+  transform: ([page, surround]) => ({ page, surround })
+})
+if (!data.value || !data.value.page) {
+  throw createError({ statusCode: 404, statusMessage: 'Stránka nenalezena', fatal: true })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent()
-  .where({ _extension: 'md', navigation: { $ne: false } })
-  .only(['title', 'description', '_path'])
-  .findSurround(withoutTrailingSlash(route.path))
-)
+const page = computed(() => data.value?.page)
+const surround = computed(() => data.value?.surround)
 
 useSeoMeta({
-  title: page.value.title,
-  ogTitle: `${page.value.title} - ${seo?.siteName}`,
-  description: page.value.description,
-  ogDescription: page.value.description
+  title: page.value.seo.title,
+  ogTitle: `${page.value.seo.title} - ${seo?.siteName}`,
+  description: page.value.seo.description,
+  ogDescription: page.value.seo.description
 })
 
 defineOgImageComponent('Docs')
 
-const headline = computed(() => findPageHeadline(page.value))
+const headline = computed(() => findPageHeadline(navigation.value, page.value))
 
 const links = computed(() => [toc?.bottom?.edit && {
-  icon: 'i-heroicons-pencil-square',
-  label: 'Upravit tuto stránku',
-  to: `${toc.bottom.edit}/${page?.value?._file}`,
+  icon: 'i-lucide-external-link',
+  label: 'Upravit stránku',
+  to: `${toc.bottom.edit}/${page?.value?.path}`,
   target: '_blank'
 }, ...(toc?.bottom?.links || [])].filter(Boolean))
 </script>
 
 <template>
-  <UPage>
+  <UPage v-if="page">
     <UPageHeader
       :title="page.title"
       :description="page.description"
@@ -47,19 +53,19 @@ const links = computed(() => [toc?.bottom?.edit && {
       :headline="headline"
     />
 
-    <UPageBody prose>
+    <UPageBody>
       <ContentRenderer
-        v-if="page.body"
+        v-if="page"
         :value="page"
       />
 
-      <hr v-if="surround?.length">
+      <USeparator v-if="surround?.length" />
 
       <UContentSurround :surround="surround" />
     </UPageBody>
 
     <template
-      v-if="page.toc !== false"
+      v-if="page?.body?.toc?.links?.length"
       #right
     >
       <UContentToc
@@ -74,7 +80,7 @@ const links = computed(() => [toc?.bottom?.edit && {
             class="hidden lg:block space-y-6"
             :class="{ '!mt-6': page.body?.toc?.links?.length }"
           >
-            <UDivider
+            <USeparator
               v-if="page.body?.toc?.links?.length"
               type="dashed"
             />
